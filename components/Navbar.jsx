@@ -333,10 +333,15 @@ export default function Navbar() {
                             <span className="logo-work-text">explorar</span>
                         </div>
 
-                        {/* Pop-out Box for Left Side — Secciones clasificadas */}
-                        <div className="nav-popout nav-work-box">
+                        {/* Pop-out Box for Left Side — Secciones principales */}
+                        <div
+                            className="nav-popout nav-work-box"
+                            data-lenis-prevent="true"
+                            onWheel={(e) => e.stopPropagation()}
+                            onTouchMove={(e) => e.stopPropagation()}
+                        >
                             <div className="nav-popout-inner">
-                                <span className="nav-work-group-label">Visión y Plataforma</span>
+                                <span className="nav-work-group-label">Navegación</span>
                                 <a href="#inicio" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'inicio')}>
                                     <div className="nav-work-item__img-wrap">
                                         <img src="/assets/luga/jardin.jpeg" loading="eager" alt="Inicio" className="nav-work-item__img" />
@@ -355,53 +360,22 @@ export default function Navbar() {
                                         <h4 className="nav-work-title">Datos Reales de CABA</h4>
                                     </div>
                                 </a>
-
-                                <span className="nav-work-group-label">Modelo y Negocio</span>
                                 <a href="#modelo-metricas" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'modelo-metricas')}>
                                     <div className="nav-work-item__img-wrap">
                                         <img src="/assets/luga/luga5.png" loading="eager" alt="Modelo Evaluado" className="nav-work-item__img" />
                                     </div>
                                     <div className="nav-work-item__text">
                                         <span className="nav-work-badge badge-maroon">Algoritmo</span>
-                                        <h4 className="nav-work-title">Modelo Evaluado y Metas</h4>
+                                        <h4 className="nav-work-title">Modelo Evaluado y Métricas</h4>
                                     </div>
                                 </a>
-                                <a href="#calculadora-inmobiliarias" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'calculadora-inmobiliarias')}>
-                                    <div className="nav-work-item__img-wrap">
-                                        <img src="/assets/luga/luga6.png" loading="eager" alt="Calculadora ROI" className="nav-work-item__img" />
-                                    </div>
-                                    <div className="nav-work-item__text">
-                                        <span className="nav-work-badge badge-maroon">Negocio</span>
-                                        <h4 className="nav-work-title">Calculadora ROI Inmobiliarias</h4>
-                                    </div>
-                                </a>
-
-                                <span className="nav-work-group-label">Producto y CABA</span>
                                 <a href="#showreel-section" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'showreel-section')}>
                                     <div className="nav-work-item__img-wrap">
                                         <img src="/assets/luga/referencia principal.jpg" loading="eager" alt="Radiografía Urbana de CABA" className="nav-work-item__img" />
                                     </div>
                                     <div className="nav-work-item__text">
                                         <span className="nav-work-badge badge-pink">Mapa</span>
-                                        <h4 className="nav-work-title">Radiografía Urbana de CABA</h4>
-                                    </div>
-                                </a>
-                                <a href="#funciones" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'funciones')}>
-                                    <div className="nav-work-item__img-wrap">
-                                        <img src="/assets/luga/luga3.png" loading="eager" alt="Funciones" className="nav-work-item__img" />
-                                    </div>
-                                    <div className="nav-work-item__text">
-                                        <span className="nav-work-badge badge-pink">Features</span>
-                                        <h4 className="nav-work-title">Funciones y Alertas</h4>
-                                    </div>
-                                </a>
-                                <a href="#barrios" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'barrios')}>
-                                    <div className="nav-work-item__img-wrap">
-                                        <img src="/assets/luga/plaza.jpg" loading="eager" alt="Los 48 barrios" className="nav-work-item__img" />
-                                    </div>
-                                    <div className="nav-work-item__text">
-                                        <span className="nav-work-badge badge-dark">Cobertura</span>
-                                        <h4 className="nav-work-title">Los 48 Barrios de CABA</h4>
+                                        <h4 className="nav-work-title">Radiografía Urbana CABA</h4>
                                     </div>
                                 </a>
                                 <a href="#contacto" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'contacto')}>
@@ -409,7 +383,7 @@ export default function Navbar() {
                                         <img src="/assets/luga/subte.jpg" loading="eager" alt="Team Lüga y Contacto" className="nav-work-item__img" />
                                     </div>
                                     <div className="nav-work-item__text">
-                                        <span className="nav-work-badge badge-maroon">Team</span>
+                                        <span className="nav-work-badge badge-dark">Team</span>
                                         <h4 className="nav-work-title">Redes del Team y Contacto</h4>
                                     </div>
                                 </a>

@@ -136,7 +136,7 @@ const HorizontalWords = () => {
                     <img src="/assets/HorizontalWords SVG/horizontal-words-sticker-phone.svg" className="horizontal-words__sticker-phone" alt="phone sticker" />
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 140 127" fill="none" className="horizontal-words__arrow-end-svg"><path d="M2.03125 2.42188C100.469 2.42188 130.156 52.4219 118.437 125.078L99.6875 107.891" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" ></path><path d="M2.03125 2.42188C100.469 2.42188 130.156 52.4219 118.438 125.078L137.969 110.234" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" ></path></svg>
 
-                    <h2 className="display horizontal-words__h2" aria-label="Tu barrio ideal existe en CABA">
+                    <h2 className="display horizontal-words__h2" aria-label="Tu barrio ideal existe en Lüga">
                         <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>T</div>
                         <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>u</div>
                         {" "}
@@ -163,10 +163,10 @@ const HorizontalWords = () => {
                         <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>e</div>
                         <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>n</div>
                         {" "}
-                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>C</div>
-                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>A</div>
-                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>B</div>
-                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>A</div>
+                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>L</div>
+                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>ü</div>
+                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>g</div>
+                        <div className="letter" aria-hidden="true" style={{ position: "relative", display: "inline-block" }}>a</div>
                     </h2>
                 </div>
             </div>

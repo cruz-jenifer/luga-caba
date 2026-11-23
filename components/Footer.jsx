@@ -174,9 +174,6 @@ export default function Footer() {
                 {/* Team Lüga Redes */}
                 <div className="footer-column">
                     <span className="footer-badge">redes del team lüga</span>
-                    <a href={DEMO_URL} className="footer-whatsapp" target="_blank" rel="noopener noreferrer" style={{ marginTop: 0 }}>
-                        PLAY DEMO
-                    </a>
                     <div className="footer-socials" id="footer-socials">
                         {TEAM_LUGA_LINKS.map(({ role, name, href, svg }) => (
                             <a
