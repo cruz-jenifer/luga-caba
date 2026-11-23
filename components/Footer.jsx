@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SOCIAL_ICONS, WIGGLE_CONFIG } from '@/lib/data';
+import { DEMO_URL, TEAM_LUGA_LINKS, WIGGLE_CONFIG } from '@/lib/data';
 
 function initWiggle(element, intensity) {
     const target = element.querySelector('[data-wiggle-target]') || element;
@@ -40,19 +40,15 @@ export default function Footer() {
             const creditsBox = creditsWrapper.querySelector('.credits-box');
             const creditsItems = creditsBox.querySelectorAll('.credits-item');
 
-            // Temporarily make the box visible to measure full dimensions
             gsap.set(creditsBox, { visibility: 'visible', width: 'auto', height: 'auto', opacity: 1 });
             const boxRect = creditsBox.getBoundingClientRect();
             const fullWidth = boxRect.width;
             const fullHeight = boxRect.height;
-            const boxHeight = boxRect.height; // for text Y translation
+            const boxHeight = boxRect.height;
 
-            // Distance from box's final position down to behind the credits button
             const creditsBtn = creditsWrapper.querySelector('.footer-credits');
             const startY = creditsBtn.offsetHeight + 15;
 
-            // Set precise initial states for box and text
-            // Box starts collapsed rather than 0 scale
             gsap.set(creditsBox, { visibility: 'hidden', width: 0, height: 0, opacity: 0, y: startY });
             gsap.set(creditsItems, { y: boxHeight });
 
@@ -61,10 +57,7 @@ export default function Footer() {
                 gsap.killTweensOf(creditsBox);
                 gsap.killTweensOf(creditsItems);
 
-                // Box physically grows to full dimensions instead of scaling
                 gsap.to(creditsBox, { width: fullWidth, height: fullHeight, opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' });
-
-                // Text slides up smoothly, slightly delayed
                 gsap.to(creditsItems, { y: 0, duration: 0.5, stagger: 0.04, ease: 'power3.out', delay: 0.1 });
             };
 
@@ -72,14 +65,11 @@ export default function Footer() {
                 gsap.killTweensOf(creditsBox);
                 gsap.killTweensOf(creditsItems);
 
-                // Box physically shrinks to 0x0
                 gsap.to(creditsBox, {
                     width: 0, height: 0, opacity: 0, y: startY, duration: 0.35, ease: 'power3.in',
                     onComplete: () => gsap.set(creditsBox, { visibility: 'hidden' })
                 });
 
-                // Text sits perfectly still while the box begins crushing it, 
-                // and then slowly slides back down in reverse order (`stagger: -0.03`) so the rightmost column clears first
                 gsap.to(creditsItems, { y: boxHeight, duration: 0.4, ease: 'power3.in', stagger: -0.03, delay: 0.1 });
             };
 
@@ -100,7 +90,7 @@ export default function Footer() {
             scrollTrigger: {
                 trigger: '.footer-stickers',
                 start: 'top 80%',
-                toggleActions: 'play none none reverse' // Play on enter, reverse on leave up
+                toggleActions: 'play none none reverse'
             }
         });
 
@@ -120,7 +110,6 @@ export default function Footer() {
                 const onSticker = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
                 const speed = Math.hypot(dx, dy);
 
-                // Disable proximity push if the mouse is hovering over the open credits popup box
                 const isOverCreditsBox = e.target.closest('.credits-box') !== null;
 
                 if (!onSticker && !isOverCreditsBox && dist < PROXIMITY_RADIUS && speed > MIN_SPEED) {
@@ -133,7 +122,6 @@ export default function Footer() {
                 }
             };
             document.addEventListener('mousemove', onMove);
-            // No cleanup stored here to match original behaviour (lives for page lifetime)
         });
 
         // ─── Wiggle on footer interactive elements ───
@@ -142,7 +130,7 @@ export default function Footer() {
             { selector: '.footer-map-link span', key: 'googleMap' },
             { selector: '.footer-email', key: 'email' },
             { selector: '.footer-whatsapp', key: 'whatsapp' },
-            { selector: '.credits-name', key: 'socials' }, // Added wiggle target for names using social intensity
+            { selector: '.credits-name', key: 'socials' },
         ];
         wiggleTargets.forEach(({ selector, key }) => {
             document.querySelectorAll(selector).forEach(el => initWiggle(el, WIGGLE_CONFIG[key]));
@@ -156,43 +144,58 @@ export default function Footer() {
     return (
         <div className="footer-inner">
             <div className="footer-top">
-                {/* Jobs */}
+                {/* Jobs / Explore Demo */}
                 <div className="footer-column">
                     <span className="footer-badge">¿buscás tu depa?</span>
                     <h3>empezá a explorar el mapa</h3>
-                </div>
-                {/* Office */}
-                <div className="footer-column">
-                    <span className="footer-badge">contacto</span>
-                    <address>
-                        Buenos Aires<br />
-                        Ciudad Autónoma, Argentina
-                    </address>
-                    <a href="#showreel-section" className="footer-map-link">
-                        <span>Ver en Google Maps</span>
+                    <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="footer-map-link">
+                        <span>Abrir Demo Interactivo</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 169 10" fill="none" className="draw-btn__svg">
                             <path d="M1 6.5661C56.3941 3.06082 112.187 1.20095 168 0.999878" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25"></path>
                             <path d="M32.1313 8.63371C68.2147 6.92799 104.462 6.13378 140.695 6.25107" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25"></path>
                         </svg>
                     </a>
                 </div>
-                {/* Contact */}
+                {/* Office / Demo */}
                 <div className="footer-column">
-                    <span className="footer-badge">escribinos</span>
-                    <a href="mailto:hola@luga.com.ar" className="footer-email">hola@luga.com.ar</a>
-                    <a href="https://precio-entorno-caba.vercel.app/" className="footer-whatsapp" target="_blank" rel="noopener noreferrer">PLAY DEMO</a>
-                    <p className="footer-note">*estamos en WhatsApp: respondemos rápido.</p>
+                    <span className="footer-badge">ubicación &amp; demo</span>
+                    <address>
+                        Buenos Aires<br />
+                        Ciudad Autónoma, Argentina
+                    </address>
+                    <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="footer-map-link">
+                        <span>Ver mapa de CABA en vivo</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 169 10" fill="none" className="draw-btn__svg">
+                            <path d="M1 6.5661C56.3941 3.06082 112.187 1.20095 168 0.999878" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25"></path>
+                            <path d="M32.1313 8.63371C68.2147 6.92799 104.462 6.13378 140.695 6.25107" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25"></path>
+                        </svg>
+                    </a>
+                </div>
+                {/* Team Lüga Redes */}
+                <div className="footer-column">
+                    <span className="footer-badge">redes del team lüga</span>
+                    <a href={DEMO_URL} className="footer-whatsapp" target="_blank" rel="noopener noreferrer" style={{ marginTop: 0 }}>
+                        PLAY DEMO
+                    </a>
                     <div className="footer-socials" id="footer-socials">
-                        {SOCIAL_ICONS.map(({ href, label, svg }) => (
+                        {TEAM_LUGA_LINKS.map(({ role, name, href, svg }) => (
                             <a
-                                key={label}
+                                key={role}
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="single-social w-inline-block"
-                                aria-label={label}
-                                dangerouslySetInnerHTML={{ __html: svg }}
-                            />
+                                className="footer-team-link single-social"
+                                aria-label={`${name} - ${role} en LinkedIn`}
+                            >
+                                <span
+                                    className="footer-team-link__icon"
+                                    dangerouslySetInnerHTML={{ __html: svg }}
+                                />
+                                <span className="footer-team-link__text">
+                                    <span className="footer-team-link__name">{name}</span>
+                                    <span className="footer-team-link__role">{role}</span>
+                                </span>
+                            </a>
                         ))}
                     </div>
                 </div>
@@ -231,7 +234,7 @@ export default function Footer() {
                 }}>
                     Unite a los miles de usuarios que ya encontraron su nuevo hogar de forma inteligente, transparente y sin dar vueltas.
                 </p>
-                <a href="#showreel-section" style={{
+                <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.75rem',
@@ -303,23 +306,31 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom row: credits */}
+                {/* Bottom row: credits (redes del team lüga) */}
                 <div className="footer-bottom-row">
                     <div></div>
                     <div className="footer-credits-wrapper">
                         <div className="credits-box">
                             <div className="credits-content">
-                                <div className="credits-item credit-wiggle">
-                                    <div className="overflow-wrapper"><span className="credits-label">diseño por</span></div>
-                                    <div className="overflow-wrapper"><a href="#" className="credits-name" data-wiggle-target="true">Lüga Team</a></div>
-                                </div>
-                                <div className="credits-item credit-wiggle">
-                                    <div className="overflow-wrapper"><span className="credits-label">desarrollo por</span></div>
-                                    <div className="overflow-wrapper"><a href="#" className="credits-name" data-wiggle-target="true">Lüga Dev</a></div>
-                                </div>
+                                {TEAM_LUGA_LINKS.map(({ role, name, href }) => (
+                                    <div key={role} className="credits-item credit-wiggle">
+                                        <div className="overflow-wrapper"><span className="credits-label">{role}</span></div>
+                                        <div className="overflow-wrapper">
+                                            <a
+                                                href={href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="credits-name"
+                                                data-wiggle-target="true"
+                                            >
+                                                {name} (LinkedIn)
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <a href="#" className="footer-credits">créditos</a>
+                        <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="footer-credits">team lüga</a>
                     </div>
                 </div>
             </div>
