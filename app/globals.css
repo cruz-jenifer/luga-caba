@@ -11,6 +11,8 @@
 /* Content section title + underline SVG    */
 @import './styles/motion-cards.css';
 /* MotionCard section (heading + cards + text)  */
+@import './styles/model-metrics.css';
+/* Model & Metrics section + Backdrop effect    */
 @import './styles/showreel.css';
 /* Showreel section placeholder                 */
 @import './styles/cards.css';

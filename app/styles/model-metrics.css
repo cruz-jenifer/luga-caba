@@ -1,0 +1,830 @@
+/* ─── Model & Metrics Section (Lüga Modelo y Negocio) ──────────────────────── */
+.luga-metrics-section {
+    position: relative;
+    width: 100%;
+    background-color: #FAFAFC;
+    color: #141416;
+    font-family: 'Plus Jakarta Sans', 'Epilogue', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    padding: 40px 16px 80px;
+    z-index: 2;
+}
+
+@media (min-width: 640px) {
+    .luga-metrics-section {
+        padding: 48px 24px 88px;
+    }
+}
+
+.luga-metrics-section ::selection {
+    background-color: #6725F4;
+    color: #FFFFFF;
+}
+
+.luga-metrics__container {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.lm-font-editorial-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+}
+
+/* ─── Decorations ────────────────────────────────────────────────────────── */
+.lm-sticker-badge {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lm-sticker-badge:hover {
+    transform: scale(1.06) rotate(-2deg);
+}
+
+.lm-card-purple-glow {
+    box-shadow: 0 25px 50px -12px rgba(103, 37, 244, 0.35);
+}
+
+/* ─── Hero Title Area ────────────────────────────────────────────────────── */
+.lm-hero {
+    position: relative;
+    padding: 8px 0;
+    margin-bottom: 48px;
+}
+
+.lm-hero-sticker {
+    position: absolute;
+    top: -24px;
+    right: 32px;
+    z-index: 20;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background-color: #FEF08A;
+    border: 2px solid #FFFFFF;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transform: rotate(6deg);
+}
+
+@media (min-width: 768px) {
+    .lm-hero-sticker {
+        display: flex;
+    }
+}
+
+.lm-hero-sticker__text {
+    font-size: 0.875rem;
+    font-weight: 900;
+    color: #111827;
+}
+
+.lm-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background-color: #F3E8FF;
+    color: #6725F4;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+.lm-hero-pill__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: #6725F4;
+    animation: lm-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes lm-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.lm-hero-title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #030712;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .lm-hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lm-hero-title {
+        font-size: 3.75rem;
+    }
+}
+
+.lm-hero-title__italic {
+    font-weight: 400;
+    color: #374151;
+}
+
+.lm-hero-desc {
+    margin-top: 16px;
+    font-size: 1rem;
+    max-width: 48rem;
+    line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+    .lm-hero-desc {
+        font-size: 1.125rem;
+    }
+}
+
+.lm-block-60 {
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .lm-block-60 {
+        max-width: 72%;
+    }
+}
+
+/* ─── Section 1: Evaluated Model & Goals ─────────────────────────────────── */
+.lm-section-1 {
+    margin-bottom: 56px;
+}
+
+.lm-grid-12 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .lm-grid-12 {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    .lm-col-7 {
+        grid-column: span 7 / span 7;
+    }
+    .lm-col-5 {
+        grid-column: span 5 / span 5;
+    }
+}
+
+.lm-purple-card {
+    position: relative;
+    background-color: #6725F4;
+    color: #FFFFFF;
+    padding: 28px;
+    border-radius: 32px;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .lm-purple-card {
+        padding: 36px;
+    }
+}
+
+.lm-purple-card__glow-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 32px;
+    pointer-events: none;
+}
+
+.lm-purple-card__glow-circle {
+    position: absolute;
+    right: -64px;
+    top: -64px;
+    width: 224px;
+    height: 224px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    filter: blur(40px);
+}
+
+.lm-purple-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.lm-purple-card__badge {
+    font-size: 1.125rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+}
+
+@media (min-width: 640px) {
+    .lm-purple-card__badge {
+        font-size: 1.25rem;
+    }
+}
+
+.lm-purple-card__bolt {
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.lm-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+    .lm-metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.lm-metric-r2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.lm-metric-r2__label {
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.025em;
+    margin-bottom: 6px;
+}
+
+.lm-metric-r2__value {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin-bottom: 14px;
+}
+
+@media (min-width: 640px) {
+    .lm-metric-r2__value {
+        font-size: 3.75rem;
+    }
+}
+
+.lm-metric-sub {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+@media (min-width: 640px) {
+    .lm-metric-sub {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-metrics-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.lm-metric-item__value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin-bottom: 6px;
+}
+
+@media (min-width: 640px) {
+    .lm-metric-item__value {
+        font-size: 1.875rem;
+    }
+}
+
+.lm-metric-item__desc {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.375;
+    margin-top: 4px;
+}
+
+@media (min-width: 640px) {
+    .lm-metric-item__desc {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-purple-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 20px;
+}
+
+.lm-purple-highlight {
+    font-size: 0.875rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (min-width: 640px) {
+    .lm-purple-highlight {
+        font-size: 1rem;
+    }
+}
+
+.lm-footnote {
+    margin-top: 16px;
+    padding: 4px 8px;
+}
+
+.lm-footnote__block {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+    .lm-footnote__block {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-goals-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 24px;
+    padding-top: 8px;
+}
+
+.lm-goals-heading {
+    color: #6B7280;
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .lm-goals-heading {
+        font-size: 1.25rem;
+    }
+}
+
+.lm-goal-card {
+    position: relative;
+    background-color: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.lm-goal-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.lm-goal-card__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.lm-goal-card__value {
+    font-size: 1.875rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+}
+
+@media (min-width: 640px) {
+    .lm-goal-card__value {
+        font-size: 2.25rem;
+    }
+}
+
+.lm-goal-card__tag {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.lm-goal-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.lm-goal-card__footer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #F3F4F6;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+    .lm-goal-card__footer {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-target-pill {
+    font-size: 0.75rem;
+    background-color: #FAF5FF;
+    color: #6725F4;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-weight: 700;
+}
+
+/* ─── Scroll Down Pointer ────────────────────────────────────────────────── */
+.lm-scroll-indicator {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.lm-scroll-indicator__btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background-color: #111827;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.lm-scroll-indicator__btn:hover {
+    transform: translateY(4px);
+}
+
+.lm-scroll-indicator__icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ─── Section 2: Inmobiliarias ROI ───────────────────────────────────────── */
+.lm-section-2 {
+    margin-top: 32px;
+}
+
+.lm-section-2__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.lm-section-2__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+@media (min-width: 640px) {
+    .lm-section-2__title {
+        font-size: 1.125rem;
+    }
+}
+
+.lm-section-2__pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    background-color: #E5E7EB;
+    color: #374151;
+}
+
+.lm-roi-box {
+    position: relative;
+    background-color: #F4F1FD;
+    border: 1px solid rgba(243, 232, 255, 0.8);
+    border-radius: 36px;
+    padding: 24px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+    .lm-roi-box {
+        padding: 40px;
+    }
+}
+
+.lm-roi-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .lm-roi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 48px;
+    }
+}
+
+.lm-roi-divider {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .lm-roi-divider {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+        width: 1px;
+        background-color: rgba(233, 213, 255, 0.7);
+    }
+}
+
+.lm-scenario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .lm-scenario--right {
+        padding-left: 24px;
+    }
+}
+
+.lm-scenario__time {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.lm-scenario__sub {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+@media (min-width: 640px) {
+    .lm-scenario__sub {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-scenario__roi {
+    font-size: 3.75rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+    .lm-scenario__roi {
+        font-size: 4.5rem;
+    }
+}
+
+.lm-scenario__roi-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+    .lm-scenario__roi-label {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-scenario__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.lm-scenario__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.lm-scenario__footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(233, 213, 255, 0.8);
+}
+
+.lm-scenario__footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lm-scenario__net-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+@media (min-width: 640px) {
+    .lm-scenario__net-label {
+        font-size: 1rem;
+    }
+}
+
+.lm-scenario__net-value {
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+@media (min-width: 640px) {
+    .lm-scenario__net-value {
+        font-size: 1.5rem;
+    }
+}
+
+.lm-scenario__net-unit {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.lm-assumptions {
+    margin-top: 16px;
+    padding: 8px 12px;
+}
+
+.lm-assumptions__block {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+@media (min-width: 640px) {
+    .lm-assumptions__block {
+        font-size: 0.875rem;
+    }
+}
+
+.lm-assumptions__sub {
+    margin-top: 6px;
+    font-size: 0.75rem;
+}
+
+/* ─── Efecto Backdrop (figuras gigantes de fondo, sin desenfoque ni cuadros) ─ */
+.luga-metrics-section [data-variation='backdrop'] {
+    --margin: 16px;
+    --backdrop-ink: #374151;
+    --backdrop-ink-strong: #141416;
+    --backdrop-ink-muted: #4b5563;
+    --backdrop-term: #141416;
+    --backdrop-accent: #6725F4;
+    --backdrop-line-rest: rgb(103 37 244 / 35%);
+    --backdrop-figure-color: rgb(103 37 244 / 8%);
+    position: relative;
+}
+
+@media screen and (min-width: 53em) {
+    .luga-metrics-section [data-variation='backdrop'] {
+        --margin: 30px;
+    }
+}
+
+/* Variante dentro de la tarjeta morada */
+.luga-metrics-section [data-variation='backdrop'][data-theme='purple'] {
+    --backdrop-ink: #ffffff;
+    --backdrop-ink-strong: #ffffff;
+    --backdrop-ink-muted: #e9d5ff;
+    --backdrop-term: #ffffff;
+    --backdrop-accent: #FDE047;
+    --backdrop-line-rest: rgb(255 255 255 / 45%);
+    --backdrop-figure-color: rgb(255 255 255 / 12%);
+}
+
+/* Capa de la figura gigante detrás del contenido */
+.luga-metrics-section .backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.luga-metrics-section [data-variation='backdrop'] .lm-block {
+    position: relative;
+    z-index: 1;
+}
+
+.luga-metrics-section .backdrop__figure {
+    position: absolute;
+    right: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(6.5rem, 17vw, 15rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+    color: var(--backdrop-figure-color);
+    visibility: hidden;
+    opacity: 0;
+    user-select: none;
+}
+
+.luga-metrics-section [data-variation='backdrop'][data-theme='card'] .backdrop__figure {
+    font-size: clamp(4.5rem, 9vw, 7.5rem);
+    right: 1rem;
+}
+
+.luga-metrics-section [data-variation='backdrop'][data-theme='purple'] .backdrop__figure {
+    font-size: clamp(5.5rem, 13vw, 11rem);
+    right: 1.5rem;
+}
+
+/* Texto siempre nítido y legible en todo momento */
+.luga-metrics-section [data-variation='backdrop'] .statement {
+    color: var(--backdrop-ink);
+}
+
+.luga-metrics-section [data-variation='backdrop'] .statement-strong {
+    color: var(--backdrop-ink-strong, #141416);
+}
+
+.luga-metrics-section [data-variation='backdrop'] .statement-muted {
+    color: var(--backdrop-ink-muted, #4b5563);
+}
+
+.luga-metrics-section [data-variation='backdrop'] .term--purple {
+    --backdrop-term: #6725F4;
+    --backdrop-line-rest: rgb(103 37 244 / 28%);
+}
+
+/* Enlace / palabra disparadora: subrayado limpio sin tapar texto inferior */
+.luga-metrics-section [data-variation='backdrop'] .term,
+.luga-metrics-section [data-variation='backdrop'] .term:hover,
+.luga-metrics-section [data-variation='backdrop'] .term.is-open {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.14em;
+    text-decoration-skip-ink: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--backdrop-term);
+    text-decoration-color: color-mix(
+        in srgb,
+        var(--backdrop-accent) calc(var(--line, 0) * 100%),
+        var(--backdrop-line-rest)
+    );
+    transition: none;
+}
+
+.luga-metrics-section [data-variation='backdrop'] .term--black,
+.luga-metrics-section [data-variation='backdrop'] .term--black:hover,
+.luga-metrics-section [data-variation='backdrop'] .term--black.is-open {
+    font-weight: 900;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.08em;
+}
+
+.luga-metrics-section [data-variation='backdrop'] .term:focus-visible {
+    outline: 2px solid var(--backdrop-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}

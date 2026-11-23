@@ -9,7 +9,7 @@
     overflow: hidden;
     background-color: var(--color-black-soft);
     border-radius: 24px;
-    cursor: url("/assets/Cursor SVG/cursor-pointer.svg") 2 0, pointer;
+    cursor: url("/assets/Cursor SVG/cursor-default.svg") 2 0, auto;
 }
 
 /* ── Iframe fills the container in "cover" mode ── */

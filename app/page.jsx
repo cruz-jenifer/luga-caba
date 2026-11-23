@@ -13,6 +13,7 @@ import CursorBubble from '@/components/CursorBubble';
 import SmoothScroll from '@/components/SmoothScroll';
 
 import HorizontalWords from '@/components/HorizontalWords';
+import ModelMetrics from '@/components/ModelMetrics';
 
 export default function Home() {
     return (
@@ -20,24 +21,25 @@ export default function Home() {
             <SvgSymbols />
             <SmoothScroll />
             <CursorBubble />
-            <header className="main-header">
+            <header className="main-header" id="inicio">
                 <Navbar />
                 <VimeoHero />
             </header>
             <HorizontalWords />
             <main>
-                <div className="content-section motion-cards-wrapper">
+                <div className="content-section motion-cards-wrapper" id="plataforma">
                     <MotionCards />
                 </div>
+                <ModelMetrics />
                 <Showreel />
-                <div className="content-section service-cards-wrapper">
+                <div className="content-section service-cards-wrapper" id="funciones">
                     <ServiceCards />
                 </div>
             </main>
-            <section className="Double-marquee">
+            <section className="Double-marquee" id="barrios">
                 <DoubleMarquee />
             </section>
-            <footer className="main-footer">
+            <footer className="main-footer" id="contacto">
                 <Footer />
             </footer>
             <TransitionScribble />

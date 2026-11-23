@@ -291,6 +291,37 @@ export default function Navbar() {
         };
     }, []);
 
+    const handleScrollToSection = (e, targetId) => {
+        e.preventDefault();
+        const target = document.getElementById(targetId);
+        if (target) {
+            if (window.__lenis) {
+                window.__lenis.scrollTo(target, { duration: 1.1 });
+            } else {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        const workBox = document.querySelector('.nav-work-box');
+        const overlay = document.querySelector('.nav-overlay');
+        if (workBox) {
+            gsap.to(workBox, {
+                scale: 0,
+                opacity: 0,
+                duration: 0.25,
+                ease: 'expo.in',
+                onComplete: () => gsap.set(workBox, { visibility: 'hidden' })
+            });
+        }
+        if (overlay) {
+            gsap.to(overlay, {
+                opacity: 0,
+                duration: 0.25,
+                ease: 'power2.in',
+                onComplete: () => gsap.set(overlay, { visibility: 'hidden' })
+            });
+        }
+    };
+
     return (
         <>
             <div className="nav-overlay"></div>
@@ -302,58 +333,114 @@ export default function Navbar() {
                             <span className="logo-work-text">explorar</span>
                         </div>
 
-                        {/* Pop-out Box for Left Side */}
+                        {/* Pop-out Box for Left Side — Secciones clasificadas */}
                         <div className="nav-popout nav-work-box">
                             <div className="nav-popout-inner">
-                                <div className="nav-work-item">
+                                <span className="nav-work-group-label">Visión y Plataforma</span>
+                                <a href="#inicio" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'inicio')}>
                                     <div className="nav-work-item__img-wrap">
-                                        <img src="/assets/luga/luga2.jpg" loading="eager" alt="Inteligencia de Mercado" className="nav-work-item__img" />
+                                        <img src="/assets/luga/jardin.jpeg" loading="eager" alt="Inicio" className="nav-work-item__img" />
                                     </div>
                                     <div className="nav-work-item__text">
-                                        <span className="nav-work-badge badge-maroon">Métricas</span>
-                                        <h4 className="nav-work-title">Inteligencia de Mercado</h4>
+                                        <span className="nav-work-badge badge-dark">Intro</span>
+                                        <h4 className="nav-work-title">Inicio y Propuesta</h4>
                                     </div>
-                                </div>
-                                <div className="nav-work-item">
+                                </a>
+                                <a href="#plataforma" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'plataforma')}>
                                     <div className="nav-work-item__img-wrap">
-                                        <img src="/assets/luga/luga3.png" loading="eager" alt="Notificaciones en Tiempo Real" className="nav-work-item__img" />
+                                        <img src="/assets/luga/luga2.jpg" loading="eager" alt="Plataforma y Datos" className="nav-work-item__img" />
                                     </div>
                                     <div className="nav-work-item__text">
-                                        <span className="nav-work-badge badge-pink">Alertas</span>
-                                        <h4 className="nav-work-title">Notificaciones en Tiempo Real</h4>
+                                        <span className="nav-work-badge badge-pink">Plataforma</span>
+                                        <h4 className="nav-work-title">Datos Reales de CABA</h4>
                                     </div>
-                                </div>
-                                <div className="nav-work-item">
+                                </a>
+
+                                <span className="nav-work-group-label">Modelo y Negocio</span>
+                                <a href="#modelo-metricas" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'modelo-metricas')}>
                                     <div className="nav-work-item__img-wrap">
-                                        <img src="/assets/luga/luga4.jpg" loading="eager" alt="Mapa Minimalista de CABA" className="nav-work-item__img" />
+                                        <img src="/assets/luga/luga5.png" loading="eager" alt="Modelo Evaluado" className="nav-work-item__img" />
+                                    </div>
+                                    <div className="nav-work-item__text">
+                                        <span className="nav-work-badge badge-maroon">Algoritmo</span>
+                                        <h4 className="nav-work-title">Modelo Evaluado y Metas</h4>
+                                    </div>
+                                </a>
+                                <a href="#calculadora-inmobiliarias" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'calculadora-inmobiliarias')}>
+                                    <div className="nav-work-item__img-wrap">
+                                        <img src="/assets/luga/luga6.png" loading="eager" alt="Calculadora ROI" className="nav-work-item__img" />
+                                    </div>
+                                    <div className="nav-work-item__text">
+                                        <span className="nav-work-badge badge-maroon">Negocio</span>
+                                        <h4 className="nav-work-title">Calculadora ROI Inmobiliarias</h4>
+                                    </div>
+                                </a>
+
+                                <span className="nav-work-group-label">Producto y CABA</span>
+                                <a href="#showreel-section" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'showreel-section')}>
+                                    <div className="nav-work-item__img-wrap">
+                                        <img src="/assets/luga/referencia principal.jpg" loading="eager" alt="Radiografía Urbana de CABA" className="nav-work-item__img" />
                                     </div>
                                     <div className="nav-work-item__text">
                                         <span className="nav-work-badge badge-pink">Mapa</span>
-                                        <h4 className="nav-work-title">Mapa Minimalista de CABA</h4>
+                                        <h4 className="nav-work-title">Radiografía Urbana de CABA</h4>
                                     </div>
-                                </div>
-                                <a href="#" className="nav-work-btn"><span className="nav-work-btn__text">Ver todas las features</span></a>
+                                </a>
+                                <a href="#funciones" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'funciones')}>
+                                    <div className="nav-work-item__img-wrap">
+                                        <img src="/assets/luga/luga3.png" loading="eager" alt="Funciones" className="nav-work-item__img" />
+                                    </div>
+                                    <div className="nav-work-item__text">
+                                        <span className="nav-work-badge badge-pink">Features</span>
+                                        <h4 className="nav-work-title">Funciones y Alertas</h4>
+                                    </div>
+                                </a>
+                                <a href="#barrios" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'barrios')}>
+                                    <div className="nav-work-item__img-wrap">
+                                        <img src="/assets/luga/plaza.jpg" loading="eager" alt="Los 48 barrios" className="nav-work-item__img" />
+                                    </div>
+                                    <div className="nav-work-item__text">
+                                        <span className="nav-work-badge badge-dark">Cobertura</span>
+                                        <h4 className="nav-work-title">Los 48 Barrios de CABA</h4>
+                                    </div>
+                                </a>
+                                <a href="#contacto" className="nav-work-item" onClick={(e) => handleScrollToSection(e, 'contacto')}>
+                                    <div className="nav-work-item__img-wrap">
+                                        <img src="/assets/luga/subte.jpg" loading="eager" alt="Team Lüga y Contacto" className="nav-work-item__img" />
+                                    </div>
+                                    <div className="nav-work-item__text">
+                                        <span className="nav-work-badge badge-maroon">Team</span>
+                                        <h4 className="nav-work-title">Redes del Team y Contacto</h4>
+                                    </div>
+                                </a>
+
+                                <a href="https://precio-entorno-caba.vercel.app/" target="_blank" rel="noopener noreferrer" className="nav-work-btn">
+                                    <span className="nav-work-btn__text">Ir a la Demo</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="nav-center" style={{ cursor: "url('/assets/Cursor SVG/cursor-pointer.svg') 12 12, pointer" }}>
-                    <span className="logo-truus" style={{fontFamily: "'Epilogue', sans-serif", fontWeight: 900, fontSize: "2rem", letterSpacing: "-0.05em", color: "currentColor"}}>
+                    <a
+                        href="#inicio"
+                        onClick={(e) => handleScrollToSection(e, 'inicio')}
+                        className="logo-truus"
+                        style={{fontFamily: "'Epilogue', sans-serif", fontWeight: 900, fontSize: "2rem", letterSpacing: "-0.05em", color: "currentColor", textDecoration: "none"}}
+                    >
                         Lüga
-                    </span>
+                    </a>
                 </div>
                 <div className="nav-right" style={{ cursor: "url('/assets/Cursor SVG/cursor-pointer.svg') 12 12, pointer" }}>
                     <div className="nav-hover-trigger">
-                        
-
                         {/* Pop-out Box for Right Side */}
                         <a href="https://precio-entorno-caba.vercel.app/" className="nav-wa-link" target="_blank" rel="noopener noreferrer">
-                                <span className="nav-wa-link-text">PLAY DEMO</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 169 10" fill="none" className="draw-btn__svg nav-wa-link-svg">
-                                    <path d="M1 6.5661C56.3941 3.06082 112.187 1.20095 168 0.999878" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" />
-                                    <path d="M32.1313 8.63371C68.2147 6.92799 104.462 6.13378 140.695 6.25107" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" />
-                                </svg>
-                            </a>
+                            <span className="nav-wa-link-text">PLAY DEMO</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 169 10" fill="none" className="draw-btn__svg nav-wa-link-svg">
+                                <path d="M1 6.5661C56.3941 3.06082 112.187 1.20095 168 0.999878" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" />
+                                <path d="M32.1313 8.63371C68.2147 6.92799 104.462 6.13378 140.695 6.25107" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </nav>

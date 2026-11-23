@@ -80,3 +80,11 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
     display: none;
 }
+
+html:fullscreen,
+html:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: var(--bg-color);
+}
