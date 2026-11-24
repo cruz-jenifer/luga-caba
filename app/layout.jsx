@@ -1,5 +1,12 @@
 import './globals.css';
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    themeColor: '#111827',
+};
+
 export const metadata = {
     title: 'Lüga · Mapa CABA',
     description: 'Lüga centraliza la oferta de CABA y la cruza con datos reales de precios, subtes y estilo de vida.',

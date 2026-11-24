@@ -75,13 +75,18 @@ export default function Navbar() {
         }
         const showOverlay = () => {
             if (overlay) {
-                gsap.set(overlay, { visibility: 'visible' });
+                gsap.set(overlay, { visibility: 'visible', pointerEvents: 'auto' });
                 gsap.to(overlay, { opacity: 1, duration: 0.35, ease: 'power2.out' });
             }
         };
         const hideOverlay = () => {
             if (overlay) {
-                gsap.to(overlay, { opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => gsap.set(overlay, { visibility: 'hidden' }) });
+                gsap.to(overlay, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power2.in',
+                    onComplete: () => gsap.set(overlay, { visibility: 'hidden', pointerEvents: 'none' })
+                });
             }
         };
 
@@ -113,7 +118,9 @@ export default function Navbar() {
             gsap.set(workItems, { y: 10, opacity: 0 });
             gsap.set(workBlob, { transformOrigin: 'center center' });
 
+            let isLeftOpen = false;
             const onEnterLeft = () => {
+                isLeftOpen = true;
                 gsap.killTweensOf(workBox);
                 gsap.killTweensOf(workItems);
                 gsap.killTweensOf(workBlob);
@@ -122,7 +129,7 @@ export default function Navbar() {
                 // Fast 360 blob spin — like it's spinning then releasing the box
                 gsap.to(workBlob, { rotation: '+=360', duration: 0.7, ease: 'power3.inOut' });
 
-                gsap.set(workBox, { visibility: 'visible' });
+                gsap.set(workBox, { visibility: 'visible', pointerEvents: 'auto' });
                 // Box grows out smoothly from the icon center
                 gsap.fromTo(workBox,
                     { scale: 0, opacity: 0 },
@@ -133,6 +140,7 @@ export default function Navbar() {
             };
 
             const onLeaveLeft = () => {
+                isLeftOpen = false;
                 gsap.killTweensOf(workBox);
                 gsap.killTweensOf(workItems);
                 gsap.killTweensOf(workBlob);
@@ -149,15 +157,36 @@ export default function Navbar() {
                     duration: 0.3,
                     ease: 'expo.in',
                     delay: 0.05,
-                    onComplete: () => gsap.set(workBox, { visibility: 'hidden' })
+                    onComplete: () => gsap.set(workBox, { visibility: 'hidden', pointerEvents: 'none' })
                 });
+            };
+
+            const toggleLeft = (e) => {
+                if (e.target.closest('.nav-popout')) return;
+                if (isLeftOpen) {
+                    onLeaveLeft();
+                } else {
+                    onEnterLeft();
+                }
             };
 
             navLeft.addEventListener('mouseenter', onEnterLeft);
             navLeft.addEventListener('mouseleave', onLeaveLeft);
+            const triggerEl = navLeft.querySelector('.logo-work-container') || navLeft;
+            triggerEl.addEventListener('click', toggleLeft);
+
+            if (overlay) {
+                const onOverlayClick = () => {
+                    if (isLeftOpen) onLeaveLeft();
+                };
+                overlay.addEventListener('click', onOverlayClick);
+                cleanups.push(() => overlay.removeEventListener('click', onOverlayClick));
+            }
+
             cleanups.push(() => {
                 navLeft.removeEventListener('mouseenter', onEnterLeft);
                 navLeft.removeEventListener('mouseleave', onLeaveLeft);
+                triggerEl.removeEventListener('click', toggleLeft);
             });
         }
 
