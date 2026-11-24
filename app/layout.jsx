@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import './globals.css';
 
 export const viewport = {
@@ -29,7 +30,17 @@ export default function RootLayout({ children }) {
                     rel="stylesheet"
                 />
             </head>
-            <body>{children}</body>
+            <body>
+                {children}
+                <Script
+                    src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"
+                    strategy="afterInteractive"
+                />
+                <Script
+                    src="https://files.bpcontent.cloud/2026/11/24/01/20261124010607-IURFIWGQ.js"
+                    strategy="afterInteractive"
+                />
+            </body>
         </html>
     );
 }
